@@ -1436,8 +1436,8 @@ extern void rtd2885_wlan_netlink_sendMsg(char *action_string, char *name);
 
 #ifdef CONFIG_PLATFORM_ARM_SUNxI
 #include <mach/sys_config.h>
-extern int sw_usb_disable_hcd(__u32 usbc_no);
-extern int sw_usb_enable_hcd(__u32 usbc_no);
+//extern int sw_usb_disable_hcd(__u32 usbc_no);
+//extern int sw_usb_enable_hcd(__u32 usbc_no);
 static int usb_wifi_host = 2;
 #endif
 
@@ -1986,14 +1986,15 @@ static int __init rtw_drv_entry(void)
 #ifndef CONFIG_RTL8723A
 	int ret = 0;
 	/* ----------get usb_wifi_usbc_num------------- */
-	ret = script_parser_fetch("usb_wifi_para", "usb_wifi_usbc_num", (int *)&usb_wifi_host, 64);
+	//ret = script_parser_fetch("usb_wifi_para", "usb_wifi_usbc_num", (int *)&usb_wifi_host, 64);
+	ret = 0;
 	if(ret != 0){
 		DBG_8192C("ERR: script_parser_fetch usb_wifi_usbc_num failed\n");
 		ret = -ENOMEM;
 		return ret;
 	}
 	DBG_8192C("sw_usb_enable_hcd: usbc_num = %d\n", usb_wifi_host);
-	sw_usb_enable_hcd(usb_wifi_host);
+	//sw_usb_enable_hcd(usb_wifi_host);
 #endif //CONFIG_RTL8723A
 #endif //CONFIG_PLATFORM_ARM_SUNxI
 
@@ -2039,7 +2040,7 @@ static void __exit rtw_drv_halt(void)
 #ifdef CONFIG_PLATFORM_ARM_SUNxI
 #ifndef CONFIG_RTL8723A
 	DBG_8192C("sw_usb_disable_hcd: usbc_num = %d\n", usb_wifi_host);
-	sw_usb_disable_hcd(usb_wifi_host);
+	//sw_usb_disable_hcd(usb_wifi_host);
 #endif //ifndef CONFIG_RTL8723A
 #endif	//CONFIG_PLATFORM_ARM_SUNxI
 
