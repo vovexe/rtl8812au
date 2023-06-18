@@ -961,9 +961,12 @@ endif
 ifeq ($(CONFIG_PLATFORM_ARM_SUNxI), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_ARM_SUNxI
 ARCH := arm
-CROSS_COMPILE := arm-none-linux-gnueabi-
-KVER := 3.0.8
+#CROSS_COMPILE := arm-none-linux-gnueabi-
+#KVER := 3.0.8
 #KSRC:= ../lichee/linux-3.0/
+KVER := 3.4.113-sun8i
+KSRC:= /usr/src/linux-headers-3.4.113-sun8i
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
 
 ifeq ($(CONFIG_PLATFORM_ARM_SUN6I), y)
