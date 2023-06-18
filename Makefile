@@ -959,7 +959,7 @@ endif
 
 
 ifeq ($(CONFIG_PLATFORM_ARM_SUNxI), y)
-EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_ARM_SUNxI
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN #-DCONFIG_PLATFORM_ARM_SUNxI # for some reason it does not work properly with -DCONFIG_PLATFORM_ARM_SUNxI
 ARCH := arm
 #CROSS_COMPILE := arm-none-linux-gnueabi-
 #KVER := 3.0.8
