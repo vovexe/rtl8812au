@@ -1608,7 +1608,7 @@ static int storeToFile(char *path, u8* buf, u32 sz)
 		if( 0 == (ret=openFile(&fp, path, O_CREAT|O_WRONLY, 0666)) ) {
 			DBG_871X("%s openFile path:%s fp=%p\n",__FUNCTION__, path ,fp);
 
-			ret = kernel_write(fp, buf, sz, NULL);
+//			ret = kernel_write(fp, buf, sz, NULL); // or maybe can be replaced with: ret = vfs_write(fp, buf, sz, NULL);
 			closeFile(fp);
 
 			DBG_871X("%s writeFile, ret:%d\n",__FUNCTION__, ret);
